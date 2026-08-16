@@ -5,12 +5,12 @@ ORDERS_FILE_PATH = 'data/olist_orders_dataset.csv'
 
 # limpeza do arquivo de produtos
 print('Processando o arquivo de produtos...')
-data = open_file(PRODUCTS_FILE_PATH)
-product_rows_count = len(data)
-new_list, droped_rows = drop_invalid_measures(data)
-mean_weight = mean_product_weight(new_list)
-total_fixed_categories, total_fixed_weights = fix_product_null_values(new_list, mean_weight)
-fix_category_names(new_list)
+product_list = open_file(PRODUCTS_FILE_PATH)
+product_rows_count = len(product_list)
+new_product_list, droped_rows = drop_invalid_measures(product_list)
+mean_weight = mean_product_weight(new_product_list)
+total_fixed_categories, total_fixed_weights = fix_product_null_values(new_product_list, mean_weight)
+fix_category_names(new_product_list)
 
 # limpeza do arquivo de pedidos
 print('Processando o arquivo de pedidos...')
@@ -30,7 +30,6 @@ print('Relatório gerado com sucesso!')
 
 print('----------------------- Relatório -----------------------')
 print(f'Total de linhas processadas: {total_processed_rows}')
-#TODO total de nulos corrigidos
 print(f'Total de categorias nulas corrigidas: {total_fixed_categories}')
 print(f'Total de pesos nulos corrigidos: {total_fixed_weights}')
 print(f'Total de valores nulos corrigidos: {total_fixed_nulls}')
